@@ -9,7 +9,7 @@
 				{"display": "Beat Saber"},
 				{"display": "Rock Climbing"},
 				{"display": "Developing", "hover": "Backend\nCryptography\nMicrocontrollers"},
-				{"display": "Dragons", "hover": "Did you know:", "dragon": true},
+				{"display": "Dragons", "hover": "Did you know:", "special": "dragon"},
 				{"display": "3D Printing", "hover": ""}
 			]
 		},
@@ -36,12 +36,17 @@
 			]
 		},
 		{
-			"display": "< Milse",
-			"aInline": "https://milse113.github.io/"
+			"display": "kenring",
+			"prevURL": "https://milse113.github.io/",
+			"prev": "< Miles",
+			"nextURL": "https://moogloof.herokuapp.com/",
+			"next": "Moogloof >",
+			"special": "webring"
 		},
 		{
-			"display": "Moogloof >",
-			"aInline": "https://moogloof.herokuapp.com/"
+			"display": "",
+			"special": "spacer",
+			"//": "a spacer so the webring can take up both spots"
 		},
 		{
 			"display": "Portfolio",

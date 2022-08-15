@@ -82,7 +82,13 @@ const renderPage = (page, parent) => {
 	let longestLength = directory.length;
 
 	for (let i = 0; i < page.pages.length / 2; i++) { // For every other
-		let length = page.pages[i*2].display.length;
+		const firstPage = page.pages[i*2];
+		let length = firstPage.display.length;
+
+		if (firstPage.special == 'webring') {
+			length += 8 + firstPage.next.length + firstPage.prev.length;
+			i++;
+		}
 		if (page.pages[i*2+1] !== undefined) {
 			length += page.pages[i*2+1].display.length + 4;
 		}
@@ -117,7 +123,7 @@ const renderPage = (page, parent) => {
 			subPage.html.addEventListener('click', () => {window.location = subPage.aInline});
 		}
 		if (subPage.hover !== undefined) {
-			if (subPage.dragon !== undefined) {
+			if (subPage.special == 'dragon') {
 				subPage.html.addEventListener('mouseover', () => {lockedTooltip = false; showTooltip(subPage.hover + "<br/>" + randomDragonFact()) });
 			} else {
 				subPage.html.addEventListener('mouseover', () => {lockedTooltip = false; showTooltip(subPage.hover) });
@@ -129,6 +135,35 @@ const renderPage = (page, parent) => {
 	for (let i = 0; i < page.pages.length / 2; i++) { // For every other
 		const firstPage = page.pages[i*2];
 		const secondPage = page.pages[i*2+1];
+
+		console.log(firstPage, secondPage);
+
+		if (firstPage.special == 'webring') {
+			// │ < Milse    kenring    Moogloof > │
+			const prevElement = document.createElement('span');
+			const nextElement = document.createElement('span');
+
+			prevElement.innerText = firstPage.prev;
+			nextElement.innerText = firstPage.next;
+
+			prevElement.addEventListener('click', () => {window.location = firstPage.prevURL; });
+			nextElement.addEventListener('click', () => {window.location = firstPage.nextURL; });
+
+			prevElement.classList.add('false-link');
+			nextElement.classList.add('false-link');
+
+			const pad = '&nbsp;'.repeat(Math.max((longestLength - firstPage.prev.length - firstPage.next.length - firstPage.display.length) / 2 | 0, 4));
+			console.log(pad.length);
+			renderedElement.insertAdjacentHTML('beforeend', '<br/>│ ');
+			renderedElement.append(prevElement);
+			renderedElement.insertAdjacentHTML('beforeend', pad);
+			renderedElement.insertAdjacentHTML('beforeend', firstPage.display);
+			renderedElement.insertAdjacentHTML('beforeend', pad);
+			renderedElement.append(nextElement);
+			renderedElement.insertAdjacentHTML('beforeend', ' │<br/>│' + '&nbsp;'.repeat(longestLength + 2) + '│');
+			
+			continue;
+		}
 
 		// Space last odd in the center
 		if (secondPage === undefined) {
