@@ -240,13 +240,13 @@ const loadDiscordTooltip = () => {
 
 const main = () => {
 
-	loadMainSite("./pages.json");
-	loadDragonFacts("./dragons.txt");
+	loadMainSite("./src/pages.json");
+	loadDragonFacts("./src/dragons.txt");
 	loadDiscordTooltip();
 	if (localStorage['viewedIntro']) {
 		showWebsite();
 	} else {
-		loadNeofetch('./neofetch.html');
+		loadNeofetch('./src/neofetch.html');
 		setTimeout(animateCommand, 1000, firstCommand, document.getElementById('website-command1'), showErrorCommand);
 	}
 	document.addEventListener('mousemove', e => { if (!lockedTooltip) { moveTooltip(e); } });
