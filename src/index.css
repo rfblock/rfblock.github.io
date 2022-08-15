@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.false-link {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.icon {
+	display: inline-block;
+	cursor: pointer;
+}

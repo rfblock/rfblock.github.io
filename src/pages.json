@@ -1,0 +1,52 @@
+{
+	"name": "~",
+	"pages": [
+		{
+			"name": "hobbies",
+			"display": "Hobbies",
+			"pages": [
+				{"display": "Minecraft", "hover": "Technical Minecraft\nSkyblock/Challenge Worlds\nPlugin Devlopment\nModpack Playthroughs"},
+				{"display": "Beat Saber"},
+				{"display": "Rock Climbing"},
+				{"display": "Developing", "hover": "Backend\nCryptography\nMicrocontrollers"},
+				{"display": "Dragons", "hover": "Did you know:", "dragon": true},
+				{"display": "3D Printing", "hover": ""}
+			]
+		},
+		{
+			"name": "interests",
+			"display": "Interests",
+			"pages": [
+				{"display": "Pure Math", "hover": "Axiomatic Set Theory\nZermelo-Frankel w/ Axiom of Choice"},
+				{"display": "Engineering", "hover": "Focus on Aerospace Engineering"},
+				{"display": "Music and Theory",
+					"name": "music > favorites",
+					"pages": [
+						{ "display": "Dethrone", "a": "https://www.youtube.com/watch?v=8q-CTda_ois"},
+						{ "display": "Identity Will Not Save You", "a": "https://www.youtube.com/watch?v=KXL7TGCHztU&list=PLl85lImy0ZF2DZVvn7XMf2FtwTVANk4S7"},
+						{ "display": "Sensorium", "a": "https://www.youtube.com/watch?v=It0yPNo44x4"},
+						{ "display": "The Grand Cross", "a": "https://www.youtube.com/watch?v=rMqgswLZS5Y"},
+						{ "display": "The Fuckdest Jams", "a": "https://www.youtube.com/watch?v=6Pm4vXNEaQo"},
+						{ "display": "no more forever", "a": "https://www.youtube.com/watch?v=9fIlAsMREpg"},
+						{ "display": "WANDERLUST", "a": "https://youtu.be/Vd9MU3vhp20?t=29"},
+						{ "display": "Lovely Galaxy Growing v0.9", "a": "https://www.youtube.com/watch?v=6fTA-zWdd8Q"}
+					]
+				},
+				{"display": "Dragons", "hover": "petpetpet\npetpet the dragon"}
+			]
+		},
+		{
+			"display": "< Milse",
+			"aInline": "https://milse113.github.io/"
+		},
+		{
+			"display": "Moogloof >",
+			"aInline": "https://moogloof.herokuapp.com/"
+		},
+		{
+			"display": "Portfolio",
+			"a": "javascript:;",
+			"//TODO": "Make a portfolio lmao"
+		}
+	]
+}
