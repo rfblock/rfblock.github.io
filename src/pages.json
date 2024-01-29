@@ -5,10 +5,10 @@
 			"name": "hobbies",
 			"display": "Hobbies",
 			"pages": [
-				{"display": "Minecraft", "hover": "Technical Minecraft\nSkyblock/Challenge Worlds\nPlugin Devlopment\nModpack Playthroughs"},
+				{"display": "Minecraft", "hover": "Technical Minecraft\nSkyblock/Challenge Worlds\nPlugin Development\nModpack Playthroughs"},
 				{"display": "Beat Saber"},
 				{"display": "Rock Climbing"},
-				{"display": "Developing", "hover": "Backend\nCryptography\nMicrocontrollers"},
+				{"display": "Developing", "hover": "Backend\nCryptography\nMicrocontrollers\nAvionics & Control"},
 				{"display": "Dragons", "hover": "Did you know:", "special": "dragon"},
 				{"display": "3D Printing", "hover": ""}
 			]
@@ -17,8 +17,8 @@
 			"name": "interests",
 			"display": "Interests",
 			"pages": [
-				{"display": "Pure Math", "hover": "Axiomatic Set Theory\nZermelo-Frankel w/ Axiom of Choice"},
-				{"display": "Engineering", "hover": "Focus on Aerospace Engineering"},
+				{"display": "Pure Math"},
+				{"display": "Engineering", "hover": "Aerospace Engineering,\nFocus on Avionics & Control"},
 				{"display": "Music and Theory",
 					"name": "music > favorites",
 					"pages": [
@@ -26,32 +26,28 @@
 						{ "display": "Identity Will Not Save You", "a": "https://www.youtube.com/watch?v=KXL7TGCHztU&list=PLl85lImy0ZF2DZVvn7XMf2FtwTVANk4S7"},
 						{ "display": "Sensorium", "a": "https://www.youtube.com/watch?v=It0yPNo44x4"},
 						{ "display": "The Grand Cross", "a": "https://www.youtube.com/watch?v=rMqgswLZS5Y"},
-						{ "display": "The Fuckdest Jams", "a": "https://www.youtube.com/watch?v=6Pm4vXNEaQo"},
+						{ "display": "Halcyondaze", "a": "https://www.youtube.com/watch?v=b_3VdvTibCI"},
 						{ "display": "no more forever", "a": "https://www.youtube.com/watch?v=9fIlAsMREpg"},
 						{ "display": "WANDERLUST", "a": "https://youtu.be/Vd9MU3vhp20?t=29"},
 						{ "display": "Lovely Galaxy Growing v0.9", "a": "https://www.youtube.com/watch?v=6fTA-zWdd8Q"}
 					]
 				},
-				{"display": "Dragons", "hover": "petpetpet\npetpet the dragon"}
+				{"display": "Dragons", "hover": "petpetpet\npetpet the dragon"},
+				{"display": "Aviation", "hover": "Pursuing a Private Pilot's License at Purdue University"}
 			]
 		},
 		{
-			"display": "kenring",
-			"prevURL": "https://milse113.github.io/",
-			"prev": "< Miles",
-			"nextURL": "https://moogloof.herokuapp.com/",
-			"next": "Moogloof >",
-			"special": "webring"
-		},
-		{
-			"display": "",
-			"special": "spacer",
-			"//": "a spacer so the webring can take up both spots"
+			"name": "academics",
+			"display": "Academics",
+			"pages": [
+				{"display": "Bridgewater-Raritan High School", "hover": "Class of 2023"},
+				{"display": "Purdue University", "hover": "Expected Class of 2027\nEngineering"}
+			]
 		},
 		{
 			"display": "Portfolio",
-			"a": "javascript:;",
-			"//TODO": "Make a portfolio lmao"
+			"a": "javascript:void(0);",
+			"// TODO": "Make a portfolio lmao"
 		}
 	]
 }

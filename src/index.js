@@ -1,6 +1,6 @@
 "use strict";
 
-const firstCommand = "nasm -f elf64 -o website.o website.s;# ld -o website website.o;# ./website##";
+const firstCommand = "nasm -f elf64 -o website.o website.s;# gcc website.o -no-pie -o website;# ./website##";
 const secondCommand = "vim website.s#";
 
 const loadNeofetch = url => {
@@ -117,7 +117,7 @@ const renderPage = (page, parent) => {
 			renderPage(subPage, directory); // Create subpage
 		} else if (subPage.a !== undefined) {
 			subPage.html.classList.add('false-link');
-			subPage.html.addEventListener('click', () => window.open(subPage.a, '_blank'));
+			subPage.html.addEventListener('click', () => window.open(subPage.a, '_blank', 'noopener,noreferrer'));
 		} else if (subPage.aInline !== undefined) {
 			subPage.html.classList.add('false-link');
 			subPage.html.addEventListener('click', () => {window.location = subPage.aInline});
