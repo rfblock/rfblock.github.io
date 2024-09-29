@@ -100,6 +100,7 @@ const renderPage = (page, parent) => {
 
 	const directoryTag = document.createElement('span');
 	directoryTag.innerText = directory;
+	directoryTag.classList.add('false-link');
 	directoryTag.addEventListener('click', () => loadPage('~'));
 
 	let renderedElement = document.createElement('span');

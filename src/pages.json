@@ -43,11 +43,6 @@
 				{"display": "Bridgewater-Raritan High School", "hover": "Class of 2023"},
 				{"display": "Purdue University", "hover": "Expected Class of 2027\nEngineering"}
 			]
-		},
-		{
-			"display": "Portfolio",
-			"a": "javascript:void(0);",
-			"// TODO": "Make a portfolio lmao"
 		}
 	]
 }
