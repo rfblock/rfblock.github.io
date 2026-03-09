@@ -68,150 +68,118 @@ const showErrorCommand = () => {
 	setTimeout(animateCommand, 2000, secondCommand, document.getElementById('website-command2'), showWebsite);
 }
 
-const pages = {}
-
 const loadMainSite = url => {
 	fetch(url)
 		.then(res => res.json())
-		.then(json => {renderPage(json, ''); loadPage('~')})
+		.then(json => renderPage(json, document.querySelector('#main-website-content'), -1))
 }
 
-const renderPage = (page, parent) => {
-	const name = page.name;
-	const directory = (parent != '') ? parent + ' > ' + page.name : page.name
-	let longestLength = directory.length;
+const renderPage = (page, parent, level, last) => {
+	const name = page.name ?? page.display;
 
-	for (let i = 0; i < page.pages.length / 2; i++) { // For every other
-		const firstPage = page.pages[i*2];
-		let length = firstPage.display.length;
+	const pipe = '│';
+	const dir = last ? '└╴' : '├╴';
+	const bullet = level < 0 ? '' : (pipe + ' ').repeat(level) + dir;
 
-		if (firstPage.special == 'webring') {
-			length += 8 + firstPage.next.length + firstPage.prev.length;
-			i++;
-		}
-		if (page.pages[i*2+1] !== undefined) {
-			length += page.pages[i*2+1].display.length + 4;
-		}
-		if (length > longestLength) { longestLength = length; }
+	const renderedElement = document.createElement('div');
+	
+	const levelElement = document.createElement('span');
+	renderedElement.appendChild(levelElement);
+	levelElement.innerText = bullet;
+	levelElement.classList.add('text-white');
+
+	const iconElement = document.createElement('span');
+	renderedElement.appendChild(iconElement);
+	iconElement.classList.add('iconify', page.icon || 'noicon');
+
+	const labelElement = document.createElement('span');
+	renderedElement.appendChild(labelElement);
+	labelElement.innerText = name;
+	labelElement.classList.add('label');
+
+	const childrenElement = document.createElement('div');
+	renderedElement.appendChild(childrenElement);
+	if (level >= 0) {
+		childrenElement.classList.add('hidden');
 	}
 
-	const doubleCrossBar = '═'.repeat(longestLength + 2);
-	const emptyLine = '<br/>│' + '&nbsp;'.repeat(longestLength + 2) + '│';
-
-	const directoryTag = document.createElement('span');
-	directoryTag.innerText = directory;
-	directoryTag.classList.add('false-link');
-	directoryTag.addEventListener('click', () => loadPage('~'));
-
-	let renderedElement = document.createElement('span');
-	renderedElement.innerHTML = '╒' + doubleCrossBar + '╕<br/>│&nbsp;';
-	renderedElement.appendChild(directoryTag);
-	renderedElement.insertAdjacentHTML("beforeend", '&nbsp;'.repeat(longestLength - directory.length + 1) + '│');
-	renderedElement.insertAdjacentHTML("beforeend", '<br/>╞' + doubleCrossBar + '╡');
-
-	page.pages.forEach(subPage => {
-		subPage.html = document.createElement('span');
-		subPage.html.innerText = subPage.display;
-		if (subPage.pages !== undefined) {
-			subPage.html.classList.add("false-link");
-			subPage.html.addEventListener("click", () => loadPage(subPage.name));
-			renderPage(subPage, directory); // Create subpage
-		} else if (subPage.a !== undefined) {
-			subPage.html.classList.add('false-link');
-			subPage.html.addEventListener('click', () => window.open(subPage.a, '_blank', 'noopener,noreferrer'));
-		} else if (subPage.aInline !== undefined) {
-			subPage.html.classList.add('false-link');
-			subPage.html.addEventListener('click', () => {window.location = subPage.aInline});
-		}
-		if (subPage.hover !== undefined) {
-			if (subPage.special == 'dragon') {
-				subPage.html.addEventListener('mouseover', () => {lockedTooltip = false; showTooltip(subPage.hover + "<br/>" + randomDragonFact()) });
-			} else {
-				subPage.html.addEventListener('mouseover', () => {lockedTooltip = false; showTooltip(subPage.hover) });
-			}
-			subPage.html.addEventListener('mouseout', () => hideTooltip());
-		}
-	});
-
-	for (let i = 0; i < page.pages.length / 2; i++) { // For every other
-		const firstPage = page.pages[i*2];
-		const secondPage = page.pages[i*2+1];
-
-		console.log(firstPage, secondPage);
-
-		if (firstPage.special == 'webring') {
-			// │ < Milse    kenring    Moogloof > │
-			const prevElement = document.createElement('span');
-			const nextElement = document.createElement('span');
-
-			prevElement.innerText = firstPage.prev;
-			nextElement.innerText = firstPage.next;
-
-			prevElement.addEventListener('click', () => {window.location = firstPage.prevURL; });
-			nextElement.addEventListener('click', () => {window.location = firstPage.nextURL; });
-
-			prevElement.classList.add('false-link');
-			nextElement.classList.add('false-link');
-
-			const pad = '&nbsp;'.repeat(Math.max((longestLength - firstPage.prev.length - firstPage.next.length - firstPage.display.length) / 2 | 0, 4));
-			console.log(pad.length);
-			renderedElement.insertAdjacentHTML('beforeend', '<br/>│ ');
-			renderedElement.append(prevElement);
-			renderedElement.insertAdjacentHTML('beforeend', pad);
-			renderedElement.insertAdjacentHTML('beforeend', firstPage.display);
-			renderedElement.insertAdjacentHTML('beforeend', pad);
-			renderedElement.append(nextElement);
-			renderedElement.insertAdjacentHTML('beforeend', ' │<br/>│' + '&nbsp;'.repeat(longestLength + 2) + '│');
-			
-			continue;
-		}
-
-		// Space last odd in the center
-		if (secondPage === undefined) {
-			const difference = longestLength - firstPage.display.length;
-			const leftPad = '&nbsp;'.repeat(difference / 2 + 1) // Round down
-			const rightPad = '&nbsp;'.repeat(difference / 2 + 0.5 + 1) // Round up
-			renderedElement.insertAdjacentHTML("beforeend", '<br/>│' + leftPad);
-			renderedElement.appendChild(firstPage.html);
-			renderedElement.insertAdjacentHTML("beforeend", rightPad + '│');
-			continue;
-		}
-
-		const pad = '&nbsp;'.repeat(longestLength - firstPage.display.length - secondPage.display.length);
-
-		renderedElement.insertAdjacentHTML("beforeend", '<br/>│&nbsp;');
-		renderedElement.appendChild(firstPage.html);
-		renderedElement.insertAdjacentHTML("beforeend", pad);
-		renderedElement.appendChild(secondPage.html);
-		renderedElement.insertAdjacentHTML("beforeend", '&nbsp;│' + emptyLine);
+	if (name.endsWith('/')) {
+		renderedElement.classList.add('text-blue-500');
 	}
 
-	if (parent == '') {
-		const restartIntroElement = document.createElement('span')
-		restartIntroElement.innerText = 'Rewatch Intro?'
-		const length = restartIntroElement.innerText.length;
-		restartIntroElement.addEventListener('click', () => { localStorage.removeItem('viewedIntro'); location.reload() });
-
-		const pad = '&nbsp;'.repeat(longestLength - length + 1);
-		const largePad = '&nbsp;'.repeat(longestLength + 2);
-		renderedElement.insertAdjacentHTML("beforeend", '<br/>│' + largePad + '│<br/>│' + pad);
-		renderedElement.appendChild(restartIntroElement);
-		renderedElement.insertAdjacentHTML("beforeend", ' │');
+	else if (name.endsWith('.pdf')) {
+		renderedElement.classList.add('text-purple-600');
 	}
 
-	renderedElement.insertAdjacentHTML("beforeend", '<br/>┕' + '━'.repeat(longestLength + 2) + '┙');
-
-	pages[name] = renderedElement
-}
-
-const loadPage = name => {
-	const element = document.getElementById('main-website-content');
-	try {
-	element.removeChild(element.childNodes[0]);
-	} catch (TypeError) {
-
+	else if (name.endsWith('.png') || name.endsWith('.flac')) {
+		renderedElement.classList.add('text-yellow-500');
 	}
-	element.appendChild(pages[name]);
+
+	else if (name.endsWith('.bat')) {
+		renderedElement.classList.add('text-lime-500');
+	}
+
+	else if (name.endsWith('.zip') || name.endsWith('.tar.gz')) {
+		renderedElement.classList.add('text-red-500');
+	}
+
+	else if (name.endsWith('.desktop')) {
+		renderedElement.classList.add('text-indigo-500');
+	}
+
+	else if (name.endsWith('.c')) {
+		renderedElement.classList.add('text-cyan-500');
+	}
+
+	else if (name.endsWith('.txt') || name.endsWith('.MD')) {
+		renderedElement.classList.add('text-green-500');
+	} else {
+		renderedElement.classList.add('text-white');
+	}
+
+	if (page.pages != undefined) {
+		if (level >= 0) {
+			labelElement.classList.add('false-link');
+
+			labelElement.addEventListener('click', e => {
+				childrenElement.classList.toggle('hidden');
+				iconElement.classList.toggle('open');
+			});
+		}
+		
+		page.pages.forEach((subPage, i) => {
+			subPage.html = document.createElement('span');
+			subPage.html.innerText = subPage.display;
+			renderPage(subPage, childrenElement, level+1, i == page.pages.length-1);
+		});
+	} else if (page.a != undefined) {
+		labelElement.classList.add('false-link');
+		labelElement.addEventListener('click', () => window.open(page.a, '_blank', 'noopener,noreferrer'));
+	}
+
+	if (page.hover != undefined) {
+		labelElement.classList.add('hover-link');
+		if (page.special == 'dragon') {
+			labelElement.addEventListener('mouseover', () => showTooltip(page.hover + "<br/>" + randomDragonFact()));
+		} else {
+			labelElement.addEventListener('mouseover', () => showTooltip(page.hover) );
+		}
+		labelElement.addEventListener('mouseout', () => hideTooltip());
+	}
+
+	if (page.special == 'rewatch') {
+		labelElement.classList.add('false-link');
+		labelElement.addEventListener('click', () => {
+			localStorage.removeItem('viewedIntro');
+			location.reload();
+		})
+	}
+
+	if (page.special == 'copy') {
+		labelElement.addEventListener('click', () => navigator.clipboard.writeText('steg.gy'));
+	}
+
+	parent.appendChild(renderedElement);
 }
 
 const showWebsite = () => {
@@ -255,37 +223,17 @@ const loadDragonFacts = url => {
 
 const randomDragonFact = () => dragonFacts[lastDragonFact++ % dragonFacts.length];
 
-let lockedTooltip = false;
-
-const loadDiscordTooltip = () => {
-	const element = document.getElementById('discord-wrapper');
-	element.addEventListener('mouseover', () => {
-		lockedTooltip = true;
-
-		const element = document.getElementById('hover-hint');
-		
-		element.style.left = '';
-		element.style.top = '';
-		element.style.right = '8px';
-		element.style.bottom = '40px';
-		
-		showTooltip('Click to copy username');
-	});
-	element.addEventListener('mouseout', hideTooltip);
-}
-
 const main = () => {
 
 	loadMainSite("./src/pages.json");
 	loadDragonFacts("./src/dragons.txt");
-	loadDiscordTooltip();
 	if (localStorage['viewedIntro']) {
 		showWebsite();
 	} else {
 		loadNeofetch('./src/neofetch.html');
 		setTimeout(animateCommand, 1000, firstCommand, document.getElementById('website-command1'), showErrorCommand);
 	}
-	document.addEventListener('mousemove', e => { if (!lockedTooltip) { moveTooltip(e); } });
+	document.addEventListener('mousemove', e => moveTooltip(e));
 }
 
 window.onload = main;

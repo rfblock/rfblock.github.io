@@ -1,48 +1,88 @@
 {
-	"name": "~",
+	"name": ".",
 	"pages": [
 		{
-			"name": "hobbies",
-			"display": "Hobbies",
+			"name": ".profiles/",
+			"icon": "icon-[ri--folder-fill]",
 			"pages": [
-				{"display": "Minecraft", "hover": "Technical Minecraft\nSkyblock/Challenge Worlds\nPlugin Development\nModpack Playthroughs"},
-				{"display": "Beat Saber"},
-				{"display": "Rock Climbing"},
-				{"display": "Developing", "hover": "Backend\nCryptography\nMicrocontrollers\nAvionics & Control"},
-				{"display": "Dragons", "hover": "Did you know:", "special": "dragon"},
-				{"display": "3D Printing", "hover": ""}
+				{"icon": "icon-[ri--github-fill]", "name": "github.url", "a": "https://github.com/rfblock"},
+				{"icon": "icon-[ri--linkedin-fill]", "name": "linkedin.url", "a": "https://www.linkedin.com/in/james-sanders-7581801b6/"},
+				{"icon": "icon-[ri--discord-fill]", "name": "discord.url", "hover": "@steg.gy (Click to copy)", "special": "copy"}
 			]
 		},
 		{
-			"name": "interests",
-			"display": "Interests",
+			"name": "hobbies/",
+			"icon": "icon-[ri--folder-fill]",
 			"pages": [
-				{"display": "Pure Math"},
-				{"display": "Engineering", "hover": "Aerospace Engineering,\nFocus on Avionics & Control"},
-				{"display": "Music and Theory",
-					"name": "music > favorites",
+				{"icon": "icon-[flowbite--arrow-up-right-from-square-outline]", "display": "minecraft.desktop", "hover": "Technical Minecraft\nSkyblock/Challenge Worlds\nPlugin Development\nModpack Playthroughs"},
+				{"icon": "icon-[flowbite--arrow-up-right-from-square-outline]", "display": "beatSaber.desktop"},
+				{"icon": "icon-[flowbite--file-zip-solid]", "display": "rock_climbing.tar.gz"},
+				{"icon": "icon-[streamline-logos--c-language-logo-solid]", "display": "programming.c", "hover": "Backend\nCryptography\nMicrocontrollers\nAutonomy & Control"},
+				{"icon": "icon-[flowbite--file-lines-solid]", "display": "dragons.txt", "hover": "Did you know:", "special": "dragon"},
+				{"icon": "icon-[flowbite--file-solid]", "display": "3Dprinting.3mf"}
+			]
+		},
+		{
+			"name": "projects/",
+			"icon": "icon-[ri--folder-fill]",
+			"pages": [
+				{"icon": "icon-[ri--folder-fill]", "name": "BigCube/", "pages": [
+					{"icon": "icon-[flowbite--file-lines-solid]", "name": "README.MD"},
+					{"icon": "icon-[flowbite--file-lines-solid]", "name": "CONTRIBUTORS.MD"}
+				]},
+				{"icon": "icon-[ri--folder-fill]", "name": "TimeMachine/", "pages": [
+					{"icon": "icon-[flowbite--file-lines-solid]", "name": "README.MD"},
+					{"icon": "icon-[flowbite--file-lines-solid]", "name": "CONTRIBUTORS.MD"},
+					{"icon": "icon-[flowbite--file-image-lines-solid]", "name": "time_machine_stickered.png"}
+				]},
+				{"icon": "icon-[ri--folder-fill]", "name": "basic-make/", "pages": [
+					{"icon": "icon-[flowbite--file-lines-solid]", "name": "README.MD"},
+					{"icon": "icon-[flowbite--file-lines-solid]", "name": "CONTRIBUTORS.MD"},
+					{"icon": "icon-[ri--github-fill]", "name": "basic-make.git", "a": "https://github.com/rfblock/basic-make"}
+				]},
+				{"icon": "icon-[ri--folder-fill]", "name": "rubiks-solver/", "pages": [
+					{"icon": "icon-[flowbite--file-lines-solid]", "name": "README.MD"},
+					{"icon": "icon-[flowbite--file-lines-solid]", "name": "CONTRIBUTORS.MD"},
+					{"icon": "icon-[ri--github-fill]", "name": "rubiks-solver.git", "a": "https://github.com/rfblock/rubiks-solver"}
+				]}
+			]
+		},
+		{
+			"name": "interests/",
+			"icon": "icon-[ri--folder-fill]",
+			"pages": [
+				{
+					"name": "music/favorites/",
+					"icon": "icon-[ri--folder-music-fill]",
 					"pages": [
-						{ "display": "Dethrone", "a": "https://www.youtube.com/watch?v=8q-CTda_ois"},
-						{ "display": "Identity Will Not Save You", "a": "https://www.youtube.com/watch?v=KXL7TGCHztU&list=PLl85lImy0ZF2DZVvn7XMf2FtwTVANk4S7"},
-						{ "display": "Sensorium", "a": "https://www.youtube.com/watch?v=It0yPNo44x4"},
-						{ "display": "The Grand Cross", "a": "https://www.youtube.com/watch?v=rMqgswLZS5Y"},
-						{ "display": "Halcyondaze", "a": "https://www.youtube.com/watch?v=b_3VdvTibCI"},
-						{ "display": "no more forever", "a": "https://www.youtube.com/watch?v=9fIlAsMREpg"},
-						{ "display": "WANDERLUST", "a": "https://youtu.be/Vd9MU3vhp20?t=29"},
-						{ "display": "Lovely Galaxy Growing v0.9", "a": "https://www.youtube.com/watch?v=6fTA-zWdd8Q"}
+						{ "icon": "icon-[pepicons-pop--music-note-double]", "display": "Dethrone.flac", "a": "https://www.youtube.com/watch?v=8q-CTda_ois"},
+						{ "icon": "icon-[pepicons-pop--music-note-double]", "display": "Identity_Will_Not_Save_You.flac", "a": "https://www.youtube.com/watch?v=KXL7TGCHztU&list=PLl85lImy0ZF2DZVvn7XMf2FtwTVANk4S7"},
+						{ "icon": "icon-[pepicons-pop--music-note-double]", "display": "Sensorium.flac", "a": "https://www.youtube.com/watch?v=It0yPNo44x4"},
+						{ "icon": "icon-[pepicons-pop--music-note-double]", "display": "The_Grand_Cross.flac", "a": "https://www.youtube.com/watch?v=rMqgswLZS5Y"},
+						{ "icon": "icon-[pepicons-pop--music-note-double]", "display": "Halcyondaze.flac", "a": "https://www.youtube.com/watch?v=b_3VdvTibCI"},
+						{ "icon": "icon-[pepicons-pop--music-note-double]", "display": "NO_MORE_FOREVER.flac", "a": "https://www.youtube.com/watch?v=9fIlAsMREpg"},
+						{ "icon": "icon-[pepicons-pop--music-note-double]", "display": "WANDERLUST.flac", "a": "https://youtu.be/Vd9MU3vhp20?t=29"},
+						{ "icon": "icon-[pepicons-pop--music-note-double]", "display": "Lovely_Galaxy_Growing_v0.9.flac", "a": "https://www.youtube.com/watch?v=6fTA-zWdd8Q"}
 					]
 				},
-				{"display": "Dragons", "hover": "petpetpet\npetpet the dragon"},
-				{"display": "Aviation", "hover": "Pursuing a Private Pilot's License at Purdue University"}
+				{"icon": "icon-[flowbite--file-lines-solid]", "display": "PureMath.tex"},
+				{"icon": "icon-[simple-icons--freecad]", "display": "Engineering.FCStd", "hover": "Aerospace Engineering,\nFocus on Autonomy & Control"},
+				{"icon": "icon-[flowbite--file-image-solid]", "display": "dragons.png", "hover": "petpetpet\npetpet the dragon"},
+				{"icon": "icon-[ri--folder-zip-fill]", "display": "Aviation.zip", "hover": "Pursuing a Private Pilot's License at Purdue University"}
 			]
 		},
 		{
-			"name": "academics",
-			"display": "Academics",
+			"name": "academics/",
+			"icon": "icon-[ri--folder-fill]",
 			"pages": [
-				{"display": "Bridgewater-Raritan High School", "hover": "Class of 2023"},
-				{"display": "Purdue University", "hover": "Expected Class of 2027\nEngineering"}
+				{"icon": "icon-[flowbite--file-pdf-solid]", "display": "PurdueUniversity_WL.pdf", "hover": "Expected Class of 2027\n Aeronautical and Astronautical Engineering"},
+				{"icon": "icon-[flowbite--file-pdf-solid]", "display": "BridgewaterRaritan_HighSchool.pdf", "hover": "Class of 2023"}
 			]
+		},
+		{
+			"icon": "icon-[flowbite--terminal-outline]",
+			"name": "rewatch_intro.bat",
+			"special": "rewatch"
 		}
 	]
 }

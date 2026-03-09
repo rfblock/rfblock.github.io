@@ -9,8 +9,7 @@
 		<script src="./lib/platform.js"></script> 
 		<script src="./src/index.js"></script>
 	</head>
-	<body class="font-mono text-white leading-5 text-3l">
-		<div class="w-screen h-screen p-8 bg-zinc-900">
+	<body class="font-mono bg-zinc-900 text-white leading-5 text-3l">
 			<h1 id="intro-anim">
 				<span class="text-green-600">➜</span><span class="text-cyan font-bold">&nbsp;&nbsp;~&nbsp;</span><span>neofetch</span>
 				<pre id="neofetch-output">
@@ -39,20 +38,11 @@
 					<span class="text-red-600">➜</span><span class="text-cyan font-bold">&nbsp;&nbsp;~&nbsp;</span><span id="website-command2"></span>
 				</span>
 			</h1>
-			<div class="w-full h-full grid place-items-center hidden" id="main-website">
-				<h1 id="main-website-content"></h1>
-			</div>
+		<div id="main-website" class="hidden w-screen h-screen p-8 bg-zinc-900">
+			<h1 id="main-website-content"></h1>
 		</div>
-		<div class="align-middle absolute right-2 bottom-2">
-				<span id="discord-wrapper" class="m-auto icon" onclick="navigator.clipboard.writeText('steg.gy');">
-					<img src="../img/discord.svg" class="w-8 h-8">
-				</span>
-				<span  class="icon bg-white rounded-full outline-2 outline-white outline w-8 h-8">
-					<a href="https://github.com/rfblock/" target="_blank" rel="noopener noreferrer">
-						<img src="../img/invertocat.svg" class="w-8">
-					</a>
-				</span>
-		</div>
+		<!-- <div class="w-full h-full hidden" id="main-website">
+		</div> -->
 		<div class="absolute bg-zinc-900 text-white p-1 hidden" id="hover-hint"></div>
 	</body>
 </html>

@@ -1,13 +1,29 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
+@plugin "@iconify/tailwind4";
+
+@theme {
+	--color-cyan: #00e5ff;
+}
+
+body {
+	overflow-x: hidden;
+}
 
 .false-link {
 	cursor: pointer;
 	text-decoration: underline;
 }
 
+.hover-link {
+	text-decoration: underline dotted;
+}
+
 .icon {
 	display: inline-block;
 	cursor: pointer;
+}
+
+span.iconify {
+	display: inline-block;
+	vertical-align: -0.125em;
 }
